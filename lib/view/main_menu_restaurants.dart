@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newsapp/const/const.dart';
 import 'package:newsapp/service/get_restaurants_data.dart';
+import 'package:newsapp/view/detailed_pages.dart';
 import 'package:newsapp/widgets_main_menu/title.dart';
 
 class MainMenuRestaurants extends StatelessWidget {
@@ -17,49 +19,99 @@ class MainMenuRestaurants extends StatelessWidget {
             FutureBuilder(
               future: GetData().readJsonRestaurant(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
-                var data = snapshot.data;
-                return Expanded(
-                  child: ListView.builder(
-                    itemCount: data['restaurants'].length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: p1a,
-                        child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height / 8,
-                            child: Card(
-                              shape: boraci20,
-                              child: Padding(
-                                padding: p1a,
-                                child: Row(
-                                  children: [
-                                    Image.network(
-                                      data['restaurants'][index]['pictureId'],
-                                      width:
-                                          MediaQuery.of(context).size.width / 4,
-                                    ),
-                                    Column(
+                if (snapshot.hasData) {
+                  var data = snapshot.data;
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: data['restaurants'].length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: p1a,
+                          child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height / 8,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.to(() =>
+                                      DetailedPagesRestaurantsLocalJson(
+                                          details: snapshot.data['restaurants']
+                                              [index]));
+                                },
+                                child: Card(
+                                  shape: boraci20,
+                                  child: Padding(
+                                    padding: p1a,
+                                    child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          data['restaurants'][index]['name'],
-                                          style: h2,
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                            data['restaurants'][index]
+                                                ['pictureId'],
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3,
+                                          ),
                                         ),
-                                        Text(
-                                          data['restaurants'][index]['city'],
-                                          style: h4,
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              data['restaurants'][index]
+                                                  ['name'],
+                                              style: h2,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.stars_outlined,
+                                                  color: Colors.amber,
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Text(
+                                                  data['restaurants'][index]
+                                                          ['rating']
+                                                      .toString(),
+                                                  style: h4,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              data['restaurants'][index]
+                                                  ['city'],
+                                              style: h4,
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            )),
-                      );
-                    },
-                  ),
-                );
+                              )),
+                        );
+                      },
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
               },
             ),
           ],

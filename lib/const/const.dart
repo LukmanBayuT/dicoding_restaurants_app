@@ -26,7 +26,7 @@ var h4 = GoogleFonts.poppins(
 );
 
 var h5 = GoogleFonts.poppins(
-  fontSize: 12,
+  fontSize: 16,
   fontWeight: FontWeight.w400,
   color: Colors.black,
 );
