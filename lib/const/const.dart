@@ -8,25 +8,25 @@ var h1 = GoogleFonts.poppins(
 );
 
 var h2 = GoogleFonts.poppins(
-  fontSize: 20,
+  fontSize: 18,
   fontWeight: FontWeight.w600,
   color: Colors.black,
 );
 
 var h3 = GoogleFonts.poppins(
-  fontSize: 20,
+  fontSize: 18,
   fontWeight: FontWeight.w500,
   color: Colors.black,
 );
 
 var h4 = GoogleFonts.poppins(
-  fontSize: 18,
+  fontSize: 16,
   fontWeight: FontWeight.w400,
   color: Colors.black,
 );
 
 var h5 = GoogleFonts.poppins(
-  fontSize: 16,
+  fontSize: 14,
   fontWeight: FontWeight.w400,
   color: Colors.black,
 );

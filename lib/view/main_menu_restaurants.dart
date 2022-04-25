@@ -29,7 +29,7 @@ class MainMenuRestaurants extends StatelessWidget {
                           padding: p1a,
                           child: SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height / 8,
+                              height: MediaQuery.of(context).size.height / 4,
                               child: GestureDetector(
                                 onTap: () {
                                   Get.to(() =>
@@ -62,21 +62,28 @@ class MainMenuRestaurants extends StatelessWidget {
                                         ),
                                         Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              data['restaurants'][index]
-                                                  ['name'],
-                                              style: h2,
-                                              overflow: TextOverflow.ellipsis,
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  2,
+                                              child: Text(
+                                                data['restaurants'][index]
+                                                    ['name'],
+                                                style: h2,
+                                                overflow: TextOverflow.clip,
+                                              ),
                                             ),
                                             Row(
                                               children: [
                                                 const Icon(
                                                   Icons.stars_outlined,
                                                   color: Colors.amber,
+                                                  size: 20,
                                                 ),
                                                 const SizedBox(
                                                   width: 10,
