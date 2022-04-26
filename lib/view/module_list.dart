@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ModuleList extends StatefulWidget {
   final List<String> doneModuleList;
 
-  ModuleList({required this.doneModuleList});
+  const ModuleList({Key? key, required this.doneModuleList}) : super(key: key);
 
   @override
   _ModuleListState createState() => _ModuleListState();
@@ -47,11 +47,12 @@ class ModuleTile extends StatelessWidget {
   final bool isDone;
   final Function() onClick;
 
-  ModuleTile({
+  const ModuleTile({
+    Key? key,
     required this.moduleName,
     required this.isDone,
     required this.onClick,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

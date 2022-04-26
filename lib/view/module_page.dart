@@ -24,7 +24,7 @@ class _ModulePageState extends State<ModulePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DoneModuleList(
+                  builder: (context) => const DoneModuleList(
                     doneModuleList: [],
                   ),
                 ),
@@ -33,7 +33,7 @@ class _ModulePageState extends State<ModulePage> {
           ),
         ],
       ),
-      body: ModuleList(
+      body: const ModuleList(
         doneModuleList: [],
       ),
     );

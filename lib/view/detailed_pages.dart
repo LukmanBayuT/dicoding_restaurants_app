@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:newsapp/const/const.dart';
 
 class DetailedPagesRestaurantsLocalJson extends StatelessWidget {
-  var details;
+  final details;
 
-  DetailedPagesRestaurantsLocalJson({Key? key, this.details}) : super(key: key);
+  const DetailedPagesRestaurantsLocalJson({Key? key, this.details})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
