@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/const/const.dart';
 
@@ -8,7 +9,9 @@ class DetailedPagesRestaurantsLocalJson extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(details['menus']['foods']);
+    if (kDebugMode) {
+      print(details['menus']['foods']);
+    }
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

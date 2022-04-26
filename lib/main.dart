@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newsapp/view/detailed_pages.dart';
-import 'package:newsapp/view/main_menu_restaurants.dart';
+import 'package:newsapp/view/module_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainMenuRestaurants(),
+      home: ModulePage(),
     );
   }
 }
